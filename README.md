@@ -20,16 +20,16 @@ backend service where users can perform Crud Operation on Tasks
 - Task Table
 
 # REST API Design
-- User APIs
-POST   /api/users
-GET    /api/users
-GET    /api/users/{id}
+### User APIs
+- POST   /api/users
+- GET    /api/users
+- GET    /api/users/{id}
 
 
-- Task APIs
-POST   /api/tasks
-GET    /api/tasks
-GET    /api/tasks/{id}
-PUT    /api/tasks/{id}
-DELETE /api/tasks/{id}
+### Task APIs
+- POST   /api/tasks
+- GET    /api/tasks
+- GET    /api/tasks/{id}
+- PUT    /api/tasks/{id}
+- DELETE /api/tasks/{id}
 
