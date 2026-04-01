@@ -5,28 +5,28 @@
 backend service where users can perform Crud Operation on Tasks
 
 ## Stack
-Spring boot
-Spring Data JPA
-Hibernate
-MySQL
-Postman
+- Spring boot
+- Spring Data JPA
+- Hibernate
+- MySQL
+- Postman
 
 ## Features
-User Management
-Task Management
+- User Management
+- Task Management
 
 ## DB Design
-User Table
-Task Table
+- User Table
+- Task Table
 
 # REST API Design
-User APIs
+- User APIs
 POST   /api/users
 GET    /api/users
 GET    /api/users/{id}
 
 
-Task APIs
+- Task APIs
 POST   /api/tasks
 GET    /api/tasks
 GET    /api/tasks/{id}
