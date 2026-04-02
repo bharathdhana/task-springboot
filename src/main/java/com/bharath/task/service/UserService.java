@@ -41,9 +41,10 @@ public class UserService {
         return "User Updated";
     }
 
-    public void deleteUser(Long id){
+    public String deleteUser(Long id){
         User user = getUserById(id);
         userRepository.delete(user);
+        return "User Deleted";
     }
 }
 
