@@ -4,6 +4,9 @@ import com.bharath.task.entity.Task;
 import com.bharath.task.exception.ResourceNotFoundException;
 import com.bharath.task.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +19,12 @@ public class TaskService {
 
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
+    }
+
+    // Pagination
+    public Page<Task> getAllTasksPages(int page, int size) {
+        Pageable pageable = PageRequest.of(page,size);
+        return taskRepository.findAll(pageable);
     }
 
     public List<Task> getAllTasks(){

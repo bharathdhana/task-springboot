@@ -3,6 +3,10 @@ package com.bharath.task.controller;
 import com.bharath.task.dto.TaskDTO;
 import com.bharath.task.entity.Task;
 import com.bharath.task.service.TaskService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +15,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
+
+// For Logging
+//@Slf4j
 public class TaskController {
 
     public final TaskService taskService;
@@ -18,6 +25,11 @@ public class TaskController {
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
+
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fetched Successfully"),
+            @ApiResponse(responseCode = "404", description = "Fetch Failed")
+    })
 
     @GetMapping
     public ResponseEntity<List<Task>> getAllTasks() {
@@ -31,6 +43,12 @@ public class TaskController {
 //        String responseBody = taskService.getTaskById(id).toString();
 //        return new ResponseEntity<>(responseBody, HttpStatus.OK);
         return ResponseEntity.ok(taskService.getTaskById(id));
+    }
+
+    // Pagination
+    @GetMapping("/page")
+    public ResponseEntity<Page<Task>> getAllPages(@RequestParam int page, @RequestParam int size) {
+        return ResponseEntity.ok(taskService.getAllTasksPages(page,size));
     }
 
     @PostMapping
